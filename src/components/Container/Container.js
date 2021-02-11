@@ -6,6 +6,8 @@ import { battleReducer, initialState } from '../../store/battleReducer'
 const playerImage = '/images/stick-man.png'
 const monsterImage = '/images/monster.jpg'
 
+const generateDiceValue = () => Math.round(Math.random() * 100) % 6 + 1
+
 export const Container = () => {
 
   const [{
@@ -22,21 +24,27 @@ export const Container = () => {
 
   const handleAttack = () => {
 
-    //Roll the dices
-    let playerRoll = {
-      dice1: Math.floor(Math.random() * 6) + 1,
-      dice2: Math.floor(Math.random() * 6) + 1,
+	/**
+	 * Roll the dices 
+	*/
+    const playerRoll = {
+      dice1: generateDiceValue(),
+      dice2: generateDiceValue(),
     }
-    let monsterRoll = {
-      dice1: Math.floor(Math.random() * 6) + 1,
-      dice2: Math.floor(Math.random() * 6) + 1,
+    const monsterRoll = {
+      dice1: generateDiceValue(),
+      dice2: generateDiceValue(),
     }
 
-    //Calculate the point
-    let point = (playerRoll.dice1 + playerRoll.dice2) - (monsterRoll.dice1 + monsterRoll.dice2)
+  /**
+	 * Calculate the point
+	*/
+    const point = (playerRoll.dice1 + playerRoll.dice2) - (monsterRoll.dice1 + monsterRoll.dice2)
 
-    //Update reducer payload
-    let payload = {
+  /**
+	 * Update reducer payload
+	*/
+    const payload = {
       playerHealth: point < 0 ? playerHealth + point : playerHealth,
       monsterHealth: point > 0 ? monsterHealth - point : monsterHealth,
       playerLostHealth: point < 0 ? -point : 0,
@@ -46,7 +54,9 @@ export const Container = () => {
       battleText: point < 0 ? `Monster hit you for ${-point}` : point > 0 ? `You hit monster for ${point}` : 'Tied'
     }
 
-    //If player health is <= 0, game end, player loses
+	/**
+	 * If player health is <= 0, game end, player loses
+	*/
     if (payload.playerHealth <= 0) {
       payload.playerHealth = 0
       payload.battleText = 'Game Over'
@@ -54,7 +64,9 @@ export const Container = () => {
       setIsGameEnd(true)
     }
 
-    //If monster health is <= 0, game end, player win
+	/**
+	 * If monster health is <= 0, game end, player win
+	*/
     if (payload.monsterHealth <= 0) {
       payload.monsterHealth = 0
       payload.battleText = 'You Win'
@@ -62,14 +74,18 @@ export const Container = () => {
       setIsGameEnd(true)
     }
 
-    //Dispatch update the reducer
+	/**
+	 * Dispatch and update the reducer
+	*/
     dispatch({
       type: 'attack',
       ...payload
     })
   }
 
-  //Reset the states and reducers after the game is end
+	/**
+	 * Reset the states and reducers after the game is end
+	*/
   const handleReset = () => {
     setResult('')
     setIsGameEnd(false)

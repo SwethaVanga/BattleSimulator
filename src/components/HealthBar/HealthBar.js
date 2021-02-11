@@ -4,7 +4,9 @@ export const HealthBar = (props) => {
   const { health, lostHealth, id } = props
   const [isShow, setIsShow] = useState(false)
 
-  //Toggle lost-health class based on lostHealth prop
+	/**
+	 * Toggle lost-health class based on lostHealth prop
+	*/
   useEffect(() => {
     if (lostHealth) {
       setIsShow(true)
