@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 module.exports = {
     'env': {
         'browser': true,
@@ -26,6 +27,10 @@ module.exports = {
         'semi': [
          'error',
          'never'
-    ],
+		],
+		'no-var': 1,
+    'eqeqeq': 1,
+    'react/prop-types': 0,
+    'react-hooks/exhaustive-deps': 0
     }
 }
