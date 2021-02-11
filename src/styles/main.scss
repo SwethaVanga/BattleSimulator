@@ -1,0 +1,223 @@
+//plugin
+@import './variables.scss';
+@import '~bootstrap/scss/bootstrap';
+
+.app-container{
+  padding: 0 30px;
+  .heading{
+    font-weight: 600;
+    font-size: 42px;
+    text-align: center;
+  }
+  .game-container{
+    margin-top: 50px;
+    .player-wrapper{
+      display: flex;
+      justify-content: center;
+      height: 300px;
+      .player-image{
+        width: 150px;
+        object-fit: contain;
+      }
+      .dice-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+    .name{
+      font-size: 30px;
+      font-weight: 600;
+      margin-top: 35px;
+      text-align: center;
+    }
+    .fight-wrapper{
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      @include media-breakpoint-down(md){
+        padding: 40px 0px;
+      }
+      .text{
+        font-size: 30px;
+        font-weight: 600;
+        margin-bottom: 70px;
+        @include media-breakpoint-down(md){
+          margin-bottom:10px;
+        }
+      }
+      .attack-btn{
+        width: 300px;
+        height: 50px;
+        font-weight: 600;
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+.health-bar{
+  height: 100%;
+  min-width: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
+  position: relative;
+  .lost-health {
+    position: absolute;
+    color: red;
+    font-size: 25px;
+    font-weight: 600;
+    left:50%;
+    transform: translateX(-50%);
+    top: -40px;
+    opacity: 0;
+    transition: 0.4s all;
+  }
+  .lost-health__show {
+    opacity: 1;
+    transition: 0s all;
+  }
+
+  .bar{
+    height: 100%;
+    width: 100%;
+    border: 1px solid black;
+    background-color: #dfdfdf;
+    position: relative;
+    .bar-inner{
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+    }
+  }
+  .health{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -30px;
+    font-size: 18px;
+    font-weight: 600;
+  }
+}
+
+.dice-wrapper{
+  width: 100px;
+  height: 100px;
+  border:1px solid #c2c2c2;
+  box-shadow: 0 3px 4px 1px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  position: relative;
+  .dot{
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    box-shadow: inset 0px 2px 4px 1px rgba(0,0,0,0.2);
+    background-color: #ffc107;
+  }
+  .dot_1{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+  .dot_2{
+    left: 50%;
+    transform: translateX(-50%);
+    &:nth-of-type(1){
+      top: 15%;
+    }
+    &:nth-of-type(2){
+      bottom: 15%;
+    }
+  }
+  .dot_3{
+    transform: translateX(-50%);
+    &:nth-of-type(1){
+      right: 0%;
+      top: 10%;
+    }
+    &:nth-of-type(2){
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+    &:nth-of-type(3){
+      left: 0%;
+      bottom: 10%;
+      transform: translateX(50%);
+    }
+  }
+
+  .dot_4{
+    &:nth-of-type(1){
+      left: 10%;
+      top: 10%;
+    }
+    &:nth-of-type(2){
+      right: 10%;
+      top: 10%;
+    }
+    &:nth-of-type(3){
+      right: 10%;
+      bottom: 10%;
+    }
+    &:nth-of-type(4){
+      left: 10%;
+      bottom: 10%;
+    }
+  }
+  .dot_5{
+    &:nth-of-type(1){
+      left: 10%;
+      top: 10%;
+    }
+    &:nth-of-type(2){
+      right: 10%;
+      top: 10%;
+    }
+    &:nth-of-type(3){
+      right: 10%;
+      bottom: 10%;
+    }
+    &:nth-of-type(4){
+      left: 10%;
+      bottom: 10%;
+    }
+    &:nth-of-type(5){
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+  }
+
+  .dot_6{
+    &:nth-of-type(1){
+      left: 15%;
+      top: 10%;
+    }
+    &:nth-of-type(2){
+      left: 15%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    &:nth-of-type(3){
+      left: 15%;
+      bottom: 10%;
+    }
+    &:nth-of-type(4){
+      right: 15%;
+      top: 10%;
+    }
+    &:nth-of-type(5){
+      right: 15%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    &:nth-of-type(6){
+      right: 15%;
+      bottom: 10%;
+    }
+  }
+}
