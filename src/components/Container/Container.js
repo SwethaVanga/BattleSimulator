@@ -92,15 +92,18 @@ export const Container = () => {
     dispatch({ type: 'reset' })
   }
 
-  return (
+	return (
     <div className='app-container'>
       <div className='heading'>Battle Simulator</div>
       <div className='game-container'>
         <Row>
-          <Col lg={4}>
+          <Col lg={4} className='game-row-1'>
             <div className='player-wrapper'>
-              <img src={playerImage} alt='player' className='player-image' />
-              <HealthBar health={playerHealth} lostHealth={playerLostHealth} id='health-bar-player' />
+              <div className='player'>
+                <img src={playerImage} alt='player' className='player-image' />
+                <HealthBar health={playerHealth} lostHealth={playerLostHealth} id='health-bar-player' />
+              </div>
+
               <div className='dice-container'>
                 <Dice value={playerDice.dice1} />
                 <br />
@@ -112,7 +115,7 @@ export const Container = () => {
             </div>
           </Col>
 
-          <Col lg={4}>
+          <Col lg={4} className='game-row-2'>
             <div className='fight-wrapper '>
               <div id='battle-text' className={`text  ${result === 'win' ? 'text-success' : result === 'lose' ? 'text-danger' : ''}`}>
                 {battleText}
@@ -127,15 +130,17 @@ export const Container = () => {
             </div>
           </Col>
 
-          <Col lg={4}>
-            <div className='player-wrapper '>
+          <Col lg={4} className='game-row-3'>
+            <div className='player-wrapper  player-wrapper__monster'>
               <div className='dice-container'>
                 <Dice value={monsterDice.dice1} />
                 <br />
                 <Dice value={monsterDice.dice2} />
               </div>
-              <HealthBar health={monsterHealth} lostHealth={monsterLostHealth} id='health-bar-monster' />
-              <img src={monsterImage} alt='player' className='player-image' />
+              <div className='player'>
+                <HealthBar health={monsterHealth} lostHealth={monsterLostHealth} id='health-bar-monster' />
+                <img src={monsterImage} alt='player' className='player-image' />
+              </div>
             </div>
             <div className='name'>
               Monster

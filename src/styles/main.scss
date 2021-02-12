@@ -11,18 +11,50 @@
   }
   .game-container{
     margin-top: 50px;
+    .game-row-2{
+      @include media-breakpoint-down(md){
+        order:2
+      }
+    }
     .player-wrapper{
       display: flex;
       justify-content: center;
       height: 300px;
-      .player-image{
-        width: 150px;
-        object-fit: contain;
+      @include media-breakpoint-down(xs){
+        flex-direction: column;
       }
+      .player{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .player-image{
+          width: 130px;
+          object-fit: contain;
+        }
+      }
+    
       .dice-container{
         display: flex;
         flex-direction: column;
         justify-content: center;
+        @include media-breakpoint-down(xs){
+          margin-top: 30px;
+          flex-direction: row;
+        }
+      }
+    }
+    .player-wrapper__monster{
+      @include media-breakpoint-down(md){
+        margin-top: 50px;
+        .dice-container{
+          order: 3
+        }
+        .health-bar{
+          order:2
+        }
+        .player-image{
+          order:1
+        }
       }
     }
     .name{
@@ -44,6 +76,7 @@
         font-size: 30px;
         font-weight: 600;
         margin-bottom: 70px;
+        text-align: center;
         @include media-breakpoint-down(md){
           margin-bottom:10px;
         }
@@ -61,8 +94,8 @@
 .health-bar{
   height: 100%;
   min-width: 50px;
-  margin-left: 50px;
-  margin-right: 50px;
+  margin-left: 30px;
+  margin-right: 30px;
   position: relative;
   .lost-health {
     position: absolute;
@@ -81,6 +114,7 @@
   }
 
   .bar{
+    min-height: 200px;
     height: 100%;
     width: 100%;
     border: 1px solid black;
@@ -109,6 +143,9 @@
   box-shadow: 0 3px 4px 1px rgba(0,0,0,0.2);
   border-radius: 8px;
   position: relative;
+  @include media-breakpoint-down(xs){
+    margin-right: 15px;
+  }
   .dot{
     position: absolute;
     width: 25px;
